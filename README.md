@@ -1,4 +1,4 @@
-# Levantamento de melhorias no Manejo
+# Proposta estruturação aplicação React+Redux
 
 ## Objetivos
 
@@ -207,7 +207,9 @@
     const meuOperation = parametrosOpcionais => async dispatch => {
       try {
         dispatch(minhaAction());
-        const dadosQuePreciso = await featureManager.obtemDados(parametrosOpcionais);
+        const dadosQuePreciso = await featureManager.obtemDados(
+          parametrosOpcionais
+        );
         dispatch(actionIncluiDadoNoRedux(dadosQuePreciso));
       } catch (error) {
         dispatch(actionNotificaErro(error.message));
@@ -313,7 +315,11 @@
 
   ```javascript
   // evite condições muito grandes ou muitas condições nos if's
-  if (variavelUm === 'bla' && variavelDois[0].valor === 2 && variavelTres.length > 0) {
+  if (
+    variavelUm === 'bla' &&
+    variavelDois[0].valor === 2 &&
+    variavelTres.length > 0
+  ) {
     // faz alguma coisa
   }
 
@@ -336,7 +342,9 @@
 
   // Sugestão
   const idadesFiltrar = [1, 2, 3];
-  const pessoasFitlradasPorIdade = pessoas.filter(pessoa => idadesFiltrar.includes(pessoa.idade));
+  const pessoasFitlradasPorIdade = pessoas.filter(pessoa =>
+    idadesFiltrar.includes(pessoa.idade)
+  );
   ```
 
 - Funções com responsabilidade única
@@ -345,7 +353,9 @@
   // Note que a função não está só filtrando as pessoas por idade
   const idadesFiltrar = [1, 2, 3];
   const filtraPessoasPorIdade = (pessoas, idadesFiltrar) => {
-    return pessoas.filter(pessoa => idadesFiltrar.includes(pessoa.idade)).sort((a, b) => a.idade - b.idade);
+    return pessoas
+      .filter(pessoa => idadesFiltrar.includes(pessoa.idade))
+      .sort((a, b) => a.idade - b.idade);
   };
 
   // Sugestão
@@ -411,19 +421,31 @@
   ];
   const trataArrayPessoas = pessoas => {
     const pessoasComDezoitoAnos = pessoas.filter(pessoa => pessoa.idade === 18);
-    const pessoasFiltradasPorNome = pessoasComDezoitoAnos.filter(pessoa => pessoa.nome === 'a');
+    const pessoasFiltradasPorNome = pessoasComDezoitoAnos.filter(
+      pessoa => pessoa.nome === 'a'
+    );
   };
 
   // Sugestão
   const trataArrayPessoas = pessoas => {
-    const pessoasComDezoitoAnos = filtraObjetosPorPropriedade(pessoas, 'idade', 18);
-    const pessoasFiltradasPorNome = filtraObjetosPorPropriedade(pessoas, 'nome', 'a');
+    const pessoasComDezoitoAnos = filtraObjetosPorPropriedade(
+      pessoas,
+      'idade',
+      18
+    );
+    const pessoasFiltradasPorNome = filtraObjetosPorPropriedade(
+      pessoas,
+      'nome',
+      'a'
+    );
   };
 
   // note que o comportamento da função pode ser extendido
   // sem a necessidade de alterar a função para cada contexto
   const filtraObjetosPorPropriedade = (objetos, propriedade, valor) => {
-    const objetosFiltrados = objetos.filter(objeto => objeto[propriedade] === valor);
+    const objetosFiltrados = objetos.filter(
+      objeto => objeto[propriedade] === valor
+    );
   };
   ```
 
