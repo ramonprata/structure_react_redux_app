@@ -26,7 +26,7 @@
 
 - Vários níveis de aninhamento de subpasta
 
-![](imagesReadme/anihamentoPastas.PNG)
+![](imagesReadme/fileStructureType.png)
 
 - Isso além de dificultar também na transição entre arquivos, dificulta imports relativos de arquivos
 - Nâo é uma regra, mas a recomendação é de no máximo 3 níveis: [Ver](https://reactjs.org/docs/faq-structure.html#is-there-a-recommended-way-to-structure-react-projects)
@@ -37,7 +37,7 @@
 
 ### 1.4 Estrutura de pastas/arquivos - Proposta
 
-![](imagesReadme/estruturaPasta.PNG)
+![](imagesReadme/fileStructureFeature.png)
 
 - Agrupamento de arquivos por features
 - Cada feature deve conter todos os arquivos correlatos
