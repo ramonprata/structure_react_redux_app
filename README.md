@@ -69,6 +69,7 @@
 ### 2.2 Controle de estado global - Redux - Actions - Problema 2
 
 - Actions implementando regras de negócio
+- Actions tratantando e manipulando dados para enviar para serviços
 - Actions tratantando e manipulando respostas de serviços para alterar estado global
   ![](imagesReadme/actionTrataResposta.PNG)
 
