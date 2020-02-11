@@ -63,6 +63,7 @@
 ### 2.1 Controle de estado global - Redux - Actions - Problema 1
 
 - Actions chamando serviços
+
   ![](imagesReadme/actionChamaServico.PNG)
 
 ### 2.2 Controle de estado global - Redux - Actions - Problema 2
