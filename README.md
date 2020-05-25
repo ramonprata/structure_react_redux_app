@@ -1,5 +1,7 @@
 # Proposta estruturação aplicação React+Redux
 
+**OBS.:** A proposta considera uma aplicação react com
+
 ## Objetivos
 
 - **Melhorar performance da aplicação**
@@ -289,6 +291,7 @@
   - transformar **class components** em **function components**
     - **components** que não usam **state** e/ou **lifecycle** NÃO precisam ser criados como **class**
     - **function components** são mais performáticos em detrimento a **class components**
+    - **IMPORTANTE** caso a versão do react for >= 16.8 use hooks, assim todos os componentes poderão ser **function components**
   - optimizar renderizações
     - existe cenários que **components** são re-renderizados mesmo que os mesmos não sofreram alterações em seu state e/ou props
     - em **class components** isso pode ser evitado implementando o lifecycle **shouldComponentUpdate()**
@@ -296,7 +299,7 @@
 
 ### 4.3 Performance - Proposta 3
 
-- Criar biblioteca de components reusáveis
+- Criar biblioteca de components reusáveis (design system)
   - reduz duplicação de código
   - reduz quantidade e aumenta qualidade de testes unitários de components
   - reduz duplicação de estilização
@@ -307,19 +310,24 @@
 ### 5. Sugestões melhorias de Código - React
 
 - Components muito grandes
-  - sugestão: no máximo 120 linhas
-- Class components
-  - se versão do react >= que 16.8
-    - use hooks para state e/lifecycle
-  - se versão do react < 16.8
-    - transformar em function components, os componentes que não usam state ou lifecycle
+
+  - sugestão: no máximo 150 linhas
+
+- Separar **container components** de **presentational components**
+
+  - [Ver](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+- Extraia de componentes mais complexos, partes que podem ser componentizadas em componentes menores, mais simples e possivelmente reusáveis
+
+- Evite usar estilizar com arquivos **.css**. O proprio react e algumas libs(opcional) possibilitam a estilização de componentes utilizando _css_ no JS.
+
 - Em containers, components, manager, service
+
   - Não fazer tratamento/validações de dados (map, filter, transformar objetos, etc.)
     - crie funções no arquivo **featureUtils** quando fizer sentido só no contexto da feature
-    - crie funções no arquivo **utils** geral quando for uma função que pode ser usada em outros contextos
-- Desejável
-  - Excluir lifecycles deprecados
-  - Atualizar react para usar hooks
+    - crie funções no arquivo **shared/utils** geral quando for uma função que pode ser usada em outros contextos
+
+- Veja mais dicas [aqui](https://www.codeinwp.com/blog/react-best-practices/)
 
 ### 5.1 Sugestões melhorias de Código - Geral
 
@@ -415,7 +423,7 @@
 ### 5.1 Sugestões melhorias de Código - Geral - Aberto/Fechado ou Generalização/Especialização
 
 - O conceito aberto/fechado nos príncipios do SOLID em POO é uma classe aberta para extentesão, mas fechada para alterações
-- Em JS generalizamos funções e extendemos seu uso criando funções especializadas que usam as genéricas em diferentes contextos
+- Em JS podemos criar funções mais genéricas e extender seu uso/comportamento criando funções especializadas que usam as genéricas em diferentes contextos
 
   - assim não precisamos alterar as funções mais genéricas para uso em diferentes contextos
 
