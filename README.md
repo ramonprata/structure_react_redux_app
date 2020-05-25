@@ -17,6 +17,8 @@
 - Isso quer dizer que existe pastas como: containers, components, actions, reducers
 - Essas pastas contém arquivos de todos os contextos/funcionalidades do sistema
 
+![](imagesReadme/fileStructureType.png)
+
 ### 1.1 Estrutura de pastas/arquivos - Problema 1
 
 - Esse tipo de estruturação não é errado, porém o número de arquivos por pasta cresce consideravelmente a medida que criamos novas funcionalidades
@@ -26,7 +28,7 @@
 
 - Vários níveis de aninhamento de subpasta
 
-![](imagesReadme/anihamentoPastas.PNG)
+![](imagesReadme/aninhamentoPastas.png)
 
 - Isso além de dificultar também na transição entre arquivos, dificulta imports relativos de arquivos
 - Nâo é uma regra, mas a recomendação é de no máximo 3 níveis: [Ver](https://reactjs.org/docs/faq-structure.html#is-there-a-recommended-way-to-structure-react-projects)
@@ -37,7 +39,7 @@
 
 ### 1.4 Estrutura de pastas/arquivos - Proposta
 
-![](imagesReadme/estruturaPasta.PNG)
+![](imagesReadme/fileStructureFeature.png)
 
 - Agrupamento de arquivos por features
 - Cada feature deve conter todos os arquivos correlatos
@@ -63,11 +65,13 @@
 ### 2.1 Controle de estado global - Redux - Actions - Problema 1
 
 - Actions chamando serviços
+
   ![](imagesReadme/actionChamaServico.PNG)
 
 ### 2.2 Controle de estado global - Redux - Actions - Problema 2
 
 - Actions implementando regras de negócio
+- Actions tratantando e manipulando dados para enviar para serviços
 - Actions tratantando e manipulando respostas de serviços para alterar estado global
   ![](imagesReadme/actionTrataResposta.PNG)
 
@@ -81,7 +85,7 @@
 
   - funções sincronas, atômicas que só retornam uma objeto com _type_ e opcionalmente um _payload_
     ```javascript
-    const minhaAction = parametroOpcional => {
+    const minhaAction = (parametroOpcional) => {
       return { type: 'TYPE_MINHA_ACTION', payload: true };
     };
     ```
@@ -110,7 +114,7 @@
   - Existe cenários que a ação do usuário pode disparar multiplas actions para alterar mais de um estado
   - Nesses cenários, crie **operations**
     ```javascript
-    const meuOperation = parametrosOpcionais => async dispatch => {
+    const meuOperation = (parametrosOpcionais) => async (dispatch) => {
       dispatch(minhaAction());
       // await ..alguma promise
       dispatch(outraAction());
@@ -165,14 +169,14 @@
 
   - **featureContainers** ou **featureComponents** chama action
     ```javascript
-    const meuComponente = props => {
+    const meuComponente = (props) => {
       //..em algum lugar no component/container
       props.minhaAction();
     };
     ```
   - action retorna: type/payload
     ```javascript
-    const minhaAction = parametroOpcional => {
+    const minhaAction = (parametroOpcional) => {
       return { type: 'TYPE_MINHA_ACTION', payload: true };
     };
     ```
@@ -194,7 +198,7 @@
 
   - **featureContainers** ou **featureComponents** chamam a operação
     ```javascript
-    const meuComponente = props => {
+    const meuComponente = (props) => {
       //..em algum lugar no component/container
       props.meuOperation();
     };
@@ -204,12 +208,10 @@
     - realiza dispatches
     - trata exceção
     ```javascript
-    const meuOperation = parametrosOpcionais => async dispatch => {
+    const meuOperation = (parametrosOpcionais) => async (dispatch) => {
       try {
         dispatch(minhaAction());
-        const dadosQuePreciso = await featureManager.obtemDados(
-          parametrosOpcionais
-        );
+        const dadosQuePreciso = await featureManager.obtemDados(parametrosOpcionais);
         dispatch(actionIncluiDadoNoRedux(dadosQuePreciso));
       } catch (error) {
         dispatch(actionNotificaErro(error.message));
@@ -299,8 +301,10 @@
 - Components muito grandes
   - sugestão: no máximo 120 linhas
 - Class components
-  - se não usam state ou lifecycle
-  - transformar em function components
+  - se versão do react >= que 16.8
+    - use hooks para state e/lifecycle
+  - se versão do react < 16.8
+    - transformar em function components, os componentes que não usam state ou lifecycle
 - Em containers, components, manager, service
   - Não fazer tratamento/validações de dados (map, filter, transformar objetos, etc.)
     - crie funções no arquivo **featureUtils** quando fizer sentido só no contexto da feature
@@ -315,11 +319,7 @@
 
   ```javascript
   // evite condições muito grandes ou muitas condições nos if's
-  if (
-    variavelUm === 'bla' &&
-    variavelDois[0].valor === 2 &&
-    variavelTres.length > 0
-  ) {
+  if (variavelUm === 'bla' && variavelDois[0].valor === 2 && variavelTres.length > 0) {
     // faz alguma coisa
   }
 
@@ -338,13 +338,11 @@
   ```javascript
   // Nomes não intuitivos/descritivos
   const idades = [1, 2, 3];
-  const filtradas = pessoas.filter(pessoa => idades.includes(pessoa.idade));
+  const filtradas = pessoas.filter((pessoa) => idades.includes(pessoa.idade));
 
   // Sugestão
   const idadesFiltrar = [1, 2, 3];
-  const pessoasFitlradasPorIdade = pessoas.filter(pessoa =>
-    idadesFiltrar.includes(pessoa.idade)
-  );
+  const pessoasFitlradasPorIdade = pessoas.filter((pessoa) => idadesFiltrar.includes(pessoa.idade));
   ```
 
 - Funções com responsabilidade única
@@ -354,15 +352,15 @@
   const idadesFiltrar = [1, 2, 3];
   const filtraPessoasPorIdade = (pessoas, idadesFiltrar) => {
     return pessoas
-      .filter(pessoa => idadesFiltrar.includes(pessoa.idade))
+      .filter((pessoa) => idadesFiltrar.includes(pessoa.idade))
       .sort((a, b) => a.idade - b.idade);
   };
 
   // Sugestão
   const filtraPessoasPorIdade = (pessoas, idadesFiltrar) => {
-    return pessoas.filter(pessoa => idadesFiltrar.includes(pessoa.idade));
+    return pessoas.filter((pessoa) => idadesFiltrar.includes(pessoa.idade));
   };
-  const ordenaPessoasPorIdade = pessoas => {
+  const ordenaPessoasPorIdade = (pessoas) => {
     return pessoas.sort((a, b) => a.idade - b.idade);
   };
   ```
@@ -376,13 +374,13 @@
   ```javascript
   // Função impura - Causa efeito colateral altereando uma variável fora de seu escopo
   let contador = 0;
-  const incrementaContador = val => {
+  const incrementaContador = (val) => {
     return (contador += val); // note que depois dessa linha o contador não será mais 0
   };
 
   // Sugestão
   let contador = 0;
-  const incrementaContador = val => {
+  const incrementaContador = (val) => {
     const contadorIncrementado = contador + val;
     return contadorIncrementado;
   };
@@ -401,7 +399,7 @@
   };
 
   // Sugestão - Passar parâmetro
-  const valorMaiorQueZero = valorAvaliar => {
+  const valorMaiorQueZero = (valorAvaliar) => {
     return valorAvaliar > 0;
   };
   ```
@@ -417,35 +415,23 @@
   // As vezes repetimos uma lógica que pode ser generalizada aplicando aberto/fechado
   const pessoas = [
     { nome: 'a', idade: 1 },
-    { nome: 'b', idade: 2 }
+    { nome: 'b', idade: 2 },
   ];
-  const trataArrayPessoas = pessoas => {
-    const pessoasComDezoitoAnos = pessoas.filter(pessoa => pessoa.idade === 18);
-    const pessoasFiltradasPorNome = pessoasComDezoitoAnos.filter(
-      pessoa => pessoa.nome === 'a'
-    );
+  const trataArrayPessoas = (pessoas) => {
+    const pessoasComDezoitoAnos = pessoas.filter((pessoa) => pessoa.idade === 18);
+    const pessoasFiltradasPorNome = pessoasComDezoitoAnos.filter((pessoa) => pessoa.nome === 'a');
   };
 
   // Sugestão
-  const trataArrayPessoas = pessoas => {
-    const pessoasComDezoitoAnos = filtraObjetosPorPropriedade(
-      pessoas,
-      'idade',
-      18
-    );
-    const pessoasFiltradasPorNome = filtraObjetosPorPropriedade(
-      pessoas,
-      'nome',
-      'a'
-    );
+  const trataArrayPessoas = (pessoas) => {
+    const pessoasComDezoitoAnos = filtraObjetosPorPropriedade(pessoas, 'idade', 18);
+    const pessoasFiltradasPorNome = filtraObjetosPorPropriedade(pessoas, 'nome', 'a');
   };
 
   // note que o comportamento da função pode ser extendido
   // sem a necessidade de alterar a função para cada contexto
   const filtraObjetosPorPropriedade = (objetos, propriedade, valor) => {
-    const objetosFiltrados = objetos.filter(
-      objeto => objeto[propriedade] === valor
-    );
+    const objetosFiltrados = objetos.filter((objeto) => objeto[propriedade] === valor);
   };
   ```
 
@@ -459,7 +445,7 @@
   const pessoasComDezoitoAnos = _.filter(pessoas, { idade: 18 });
 
   // Sugestão
-  const filtrapessoasComDezoitoAnos = pessoas => {
+  const filtrapessoasComDezoitoAnos = (pessoas) => {
     return _.filter(pessoas, { idade: 18 });
   };
   ```
