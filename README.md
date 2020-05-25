@@ -28,10 +28,10 @@
 
 - Vários níveis de aninhamento de subpasta
 
-![](imagesReadme/aninhamentoPastas.png)
+![](imagesReadme/aninhamentoPastas.PNG)
 
 - Isso além de dificultar também na transição entre arquivos, dificulta imports relativos de arquivos
-- Nâo é uma regra, mas a recomendação é de no máximo 3 níveis: [Ver](https://reactjs.org/docs/faq-structure.html#is-there-a-recommended-way-to-structure-react-projects)
+- O aninhamento em muitos níveis pode dificultar a transição entre arquivos, mas se ainda sim for desejavel aninhar, a recomendação é de no máximo 3 níveis: [Ver](https://reactjs.org/docs/faq-structure.html#is-there-a-recommended-way-to-structure-react-projects)
 
 ### 1.3 Estrutura de pastas/arquivos - Problema 3
 
@@ -239,6 +239,10 @@
     }
     ```
 
+    Exemplo
+
+    ![](imagesReadme/manager.PNG)
+
   - **featureService**
 
     - somente faz a requisição
@@ -251,6 +255,10 @@
       }
     }
     ```
+
+    Exemplo
+
+    ![](imagesReadme/service.PNG)
 
 ### 3.4 Responsabilidades - Proposta - Dicas
 
