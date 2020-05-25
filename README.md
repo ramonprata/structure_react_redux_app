@@ -13,7 +13,7 @@
 
 ## 1. Estrutura de pastas/arquivos
 
-- Cenário atual: estrutura de pasta que agrupa arquivos por tipo
+- Cenário: estrutura de pasta que agrupa arquivos por tipo
 - Isso quer dizer que existe pastas como: containers, components, actions, reducers
 - Essas pastas contém arquivos de todos os contextos/funcionalidades do sistema
 
