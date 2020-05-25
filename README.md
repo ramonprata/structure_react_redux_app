@@ -420,7 +420,7 @@
 
 ### 5.1 Sugestões melhorias de Código - Geral - Aberto/Fechado ou Generalização/Especialização
 
-- O conceito aberto/fechado nos príncipios do SOLID em POO é uma classe aberta para extentesão, mas fechada para alterações
+- O conceito aberto/fechado nos príncipios do SOLID em POO é uma classe aberta para extensão, mas fechada para alterações
 - Em JS podemos criar funções mais genéricas e extender seu uso/comportamento criando funções especializadas que usam as genéricas em diferentes contextos
 
   - assim não precisamos alterar as funções mais genéricas para uso em diferentes contextos
