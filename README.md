@@ -313,13 +313,11 @@
 
   - sugestão: no máximo 150 linhas
 
-- Separar **container components** de **presentational components**
-
-  - [Ver](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+- Separar **container components** de **presentational components**. [Ver](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
 - Extraia de componentes mais complexos, partes que podem ser componentizadas em componentes menores, mais simples e possivelmente reusáveis
 
-- Evite usar estilizar com arquivos **.css**. O proprio react e algumas libs(opcional) possibilitam a estilização de componentes utilizando _css_ no JS.
+- Evite estilizar com arquivos **.css**. O proprio react e algumas libs(opcional) possibilitam a estilização de componentes utilizando _css_ no JS.
 
 - Em containers, components, manager, service
 
