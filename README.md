@@ -1,6 +1,6 @@
 # Proposta estruturação aplicação React+Redux
 
-**OBS.:** A proposta considera uma aplicação react com
+**OBS.:** A proposta considera uma aplicação react utilizando redux e redux-thunk. Porém os conceitos propostos podem ser explorados e utilizados com outros controladores de estado
 
 ## Objetivos
 
