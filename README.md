@@ -53,11 +53,14 @@
     - Ex.: **nomeFeature**Actions, **nomeFeature**Reducer, **nomeFeature**Operations
   - `pastaFeature/views`: Containers e compoentes. Extensão `.JSX`
     - **nomeFeature**Container, **nomeFeature**ComponententUm, **nomeFeature**ComponententDois ...
+  - `pastaFeature/hooks`: hooks que são usados somente no contexto da feature
   - **Testes**: deve haver uma pasta tests para `pastaFeature` e suas respectivas subpastas
 - **IMPORTANTE**
 - Os arquivos de redux só fazem sentido existir se houver controle de estado para a feature
 - Os arquivos Manager, Service só fazem sentido se houver necessidade de comunicação com micro serviços e regras de negócio que implicam nessa comunicação
 - **nomeFeature**Utils: funções úteis que só fazem sentido no contexto da feature
+- coisas que devem ser compartilhadas entre features devem ser incluídas numa pasta shared
+  - Ex.: **shared/components** **shared/hooks** **shared/utils.js**, etc.
 
 ## 2. Controle de estado global - Redux
 
