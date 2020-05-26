@@ -55,7 +55,7 @@
     - **nomeFeature**Container, **nomeFeature**ComponententUm, **nomeFeature**ComponententDois ...
   - **Testes**: deve haver uma pasta tests para `pastaFeature` e suas respectivas subpastas
 - **IMPORTANTE**
-- Os arquivos de redux só fazem sentido existir se houer controle de estado para a feature
+- Os arquivos de redux só fazem sentido existir se houver controle de estado para a feature
 - Os arquivos Manager, Service só fazem sentido se houver necessidade de comunicação com micro serviços e regras de negócio que implicam nessa comunicação
 - **nomeFeature**Utils: funções úteis que só fazem sentido no contexto da feature
 
