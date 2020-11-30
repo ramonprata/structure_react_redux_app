@@ -42,6 +42,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 - o número de arquivos por pasta cresce consideravelmente a medida que a aplicação evolui
 - arquivos correlatos de uma mesma funcionalidade, que geralemente precisam ser modificados em conjunto, ficam muito distantes uns dos outros
 - vários níveis de aninhamento de subpasta
+    
     ![](imagesReadme/aninhamentoPastas.PNG)
 
     - dificulta encontrar o que precisamos
