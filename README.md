@@ -1,6 +1,6 @@
 # Proposta estruturação aplicação React+Redux
 
-**OBS.:** A proposta considera uma aplicação React utilizando redux e redux-thunk. Porém os conceitos propostos podem ser explorados e utilizados com outros controladores de estado
+**OBS.:** A proposta considera uma aplicação React utilizando redux e redux-thunk. Porém os conceitos propostos podem ser adaptados e utilizados com outros controladores de estado
 
 Como você já deve saber, o React não é um framework, e sim, uma biblioteca para criar interfaces de usuário. Isso quer dizer que, o React em si não vai e nem tem a pretensão (até então) de definir como sua aplicação deve ser estruturada/organizada. Isso quer dizer também que, o React vai te dar maior liberdade para organizar sua aplicação da forma mais adequada às necessidades. Porém, parafraseando uncle Ben: *"com grandes poderes, vem grandes responsabilidades"*
 Dito isso, este artigo não tem como propósito entregar uma receita de bolo definitiva de como organizar sua aplicação React, mas sim, propor algumas ideias.
@@ -42,7 +42,8 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 - o número de arquivos por pasta cresce consideravelmente a medida que a aplicação evolui
 - arquivos correlatos de uma mesma funcionalidade, que geralemente precisam ser modificados em conjunto, ficam muito distantes uns dos outros
 - vários níveis de aninhamento de subpasta
-    - ![](imagesReadme/aninhamentoPastas.PNG)
+    ![](imagesReadme/aninhamentoPastas.PNG)
+
     - dificulta encontrar o que precisamos
     - dificulta  transição entre arquivos e imports relativos
     - quando for realmente necessário aninhamento, não ultrapasse 3 níveis: [recomendação](https://reactjs.org/docs/faq-structure.html#is-there-a-recommended-way-to-structure-react-projects)
@@ -104,7 +105,8 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 ### 1.4 Estrutura de pastas - Proposta - Pasta Shared
 É claro que numa aplicação real teremos coisas que serão genéricas o suficiente que possam ser usadas em várias Features (componentes, hooks, funções úteis, constantes).
 - Path: ```src/Shared```
-- incluir imagem pasta shared ![](imagesReadme/shared.png)
+- incluir imagem pasta shared 
+![](imagesReadme/shared.PNG)
 
 
 ## 2. Controle de estado global - Problemas
@@ -113,7 +115,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 - Controle de estado, regras de negócio e comunicação com serviço mesclados numa coisa só
 - Actions chamando serviços
   ![](imagesReadme/actionChamaServico.PNG)
-  
+
 - Actions implementando regras de negócio
 - Actions tratantando e manipulando dados de saida para enviar para serviços
 - Actions tratantando e manipulando dados de entrada para alterar estado global
