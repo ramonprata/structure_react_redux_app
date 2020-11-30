@@ -29,7 +29,6 @@ Para isso precisamos **separar responsabilidades** na nossa aplicação, começa
 
 ## 1. Estrutura de pastas
 Se você procurar na documentação oficial do React encontrará duas abordagens para estruturação de pastas: agrupamento por [arquivos de mesmo tipo](https://reactjs.org/docs/faq-structure.html#grouping-by-file-type) e agrupamento por [features](https://reactjs.org/docs/faq-structure.html#grouping-by-features-or-routes)
-- Cenário: estrutura de pasta que agrupa arquivos por tipo
 
 ### 1.1 Estrutura de pastas - Arquivos mesmo tipo
 - Isso quer dizer que existe pastas como: containers, components, actions, reducers
