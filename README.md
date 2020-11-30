@@ -16,17 +16,6 @@ Bom, já que falamos de reponsabilidade, acredito que esse seja o cerne dos prob
 O React é uma lib declarativa, isso quer dizer que quando construímos um componente, nós devemos preocupar mais com O QUE e deixar para o React lidar com o COMO renderizar. Seria bom se usássemos essa mesma abordagem - **O QUE/COMO** - para separarmos o que é responsabilidade do componente e o que não é, e assim mantermos nossos componentes o mais declarativos possível, não só na parte da renderização (já é abstraída pelo React). 
 Para isso precisamos **separar responsabilidades** na nossa aplicação, começando pela estrutura de pastas.
 
-## Objetivos
-
-- **Melhorar performance da aplicação**
-- **Reduzir tamanho do _bundle_ da aplicação**
-- **Potencializar escalabilidade da aplicação**
-- **Melhorar usabilidade da aplicação**
-- **Melhorar organização de código**
-- **Aumentar reuso de código**
-- **Reduzir quantidade de testes unitários**
-- **Facilitar e dimunuir tempo para manutenibilidade da aplicação**
-
 ## 1. Estrutura de pastas
 Se você procurar na documentação oficial do React encontrará duas abordagens para estruturação de pastas: agrupamento por [arquivos de mesmo tipo](https://reactjs.org/docs/faq-structure.html#grouping-by-file-type) e agrupamento por [features](https://reactjs.org/docs/faq-structure.html#grouping-by-features-or-routes)
 
@@ -349,6 +338,28 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
   - aumenta consistência da aplicação
   - **components** reusáveis com renderização optimizada reduz o tempo de renderização de **parent components**
   - reduz o bundle da aplicação
+  
+### 7. O uso -  Vantagens
+- Melhoria na performance da aplicação
+- Redução no tamanho do bundle da aplicação
+- Potencialização da escalabilidade da aplicação
+- Melhoria na organização do código
+- Facilidade no entendimento da aplicação
+- Redução na curva de *onboarding* de novos membros na equipe
+- Aumento do reuso de código
+- Redução da quantidade de testes unitários
+- Redução no tempo para manutenibilidade da aplicação
+
+### 7.1 O uso - Sugestões
+Em alguns dos projetos que essa proposta foi aplicada, foram feitas/sugeridas algumas adaptações que talvez faça sentido para o seu projeto
+
+- **FeatureManager** e **FeatureService**: serem colocadas numa subpasta da Feature, em vez de ficar na pasta raiz. 
+    - `/pastaFeature/api/FeatureService`
+    - `/pastaFeature/api/FeatureManager`
+- **FeatureService**: mudar nome para **FeatureRepository**
+- **FeatureService**: não ficar dentro da pasta da Feature. Em vez disso, ser um recurso compartilhado numa subpasta na Shared. 
+    - `src/Shared/api/FeatureService`
+- **Componentes**: Para cada componente, seja da **Feature** ou compartilhado, criar uma pasta e não ser só o `Arquivo.jsx` em si
 
 ### 6. Sugestões melhorias gerais de Código - React
 
