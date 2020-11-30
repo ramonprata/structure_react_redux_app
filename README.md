@@ -196,7 +196,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 
 ### 4 Fluxo - Proposta - Visão geral: Redux vs Manager vs Service
 
-![](imagesReadme/fluxoReactRedux.PNG)
+![](imagesReadme/fluxoReactReduxCopy.PNG)
 
 ### 4.1 Fluxo - Proposta - Visão detalhada
 - **Alteração de estado com Actions - Regras**
