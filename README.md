@@ -105,7 +105,8 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 ### 1.4 Estrutura de pastas - Proposta - Pasta Shared
 É claro que numa aplicação real teremos coisas que serão genéricas o suficiente que possam ser usadas em várias Features (componentes, hooks, funções úteis, constantes).
 - Path: ```src/Shared```
-  ![](imagesReadme/shared.PNG)
+  
+![](imagesReadme/shared.PNG)
 
 
 ## 2. Controle de estado global - Problemas
