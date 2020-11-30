@@ -113,6 +113,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 - Controle de estado, regras de negócio e comunicação com serviço mesclados numa coisa só
 - Actions chamando serviços
   ![](imagesReadme/actionChamaServico.PNG)
+  
 - Actions implementando regras de negócio
 - Actions tratantando e manipulando dados de saida para enviar para serviços
 - Actions tratantando e manipulando dados de entrada para alterar estado global
