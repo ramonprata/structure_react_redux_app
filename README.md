@@ -114,6 +114,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 - Store com responsabilidades que não implicam controle de estado
 - Controle de estado, regras de negócio e comunicação com serviço mesclados numa coisa só
 - Actions chamando serviços
+  
   ![](imagesReadme/actionChamaServico.PNG)
 
 - Actions implementando regras de negócio
