@@ -36,7 +36,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
     - dificulta  transição entre arquivos e imports relativos
     - quando for realmente necessário aninhamento, não ultrapasse 3 níveis: [recomendação](https://reactjs.org/docs/faq-structure.html#is-there-a-recommended-way-to-structure-react-projects)
 
-### 1.4 Estrutura de pastas - Proposta
+### 1.4 Estrutura de pastas - Proposta - FeatureResponsability
 
 ![](imagesReadme/fileStructureFeature.png)
 
