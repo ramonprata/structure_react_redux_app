@@ -2,19 +2,18 @@
 
 **OBS.:** A proposta considera uma aplicação React utilizando redux e redux-thunk. Porém os conceitos propostos podem ser adaptados e utilizados com outros controladores de estado
 
-Como você já deve saber, o React não é um framework, e sim, uma biblioteca para criar interfaces de usuário. Isso quer dizer que, o React em si não vai e nem tem a pretensão (até então) de definir como sua aplicação deve ser estruturada/organizada. Isso quer dizer também que, o React vai te dar maior liberdade para organizar sua aplicação da forma mais adequada às necessidades. Porém, parafraseando uncle Ben: *"com grandes poderes, vem grandes responsabilidades"*
+Como você já deve saber, o React não é um framework e sim, uma biblioteca para criar interfaces de usuário. Isso quer dizer que, o React em si não vai e nem tem a pretensão (até então) de definir como sua aplicação deve ser estruturada/organizada e quer dizer também que, o React vai te dar maior liberdade para organizar sua aplicação da forma mais adequada às necessidades. Porém, parafraseando uncle Ben: *"com grandes poderes, vem grandes responsabilidades"*
 Dito isso, este artigo não tem como propósito entregar uma receita de bolo definitiva de como organizar sua aplicação React, mas sim, propor algumas ideias.
 
 ## Por que aplicações React viram monstrinhos?
-Bom, já que falamos de reponsabilidade, acredito que esse seja o cerne dos problemas de organização de uma aplicação React, separar as **reponsabilidades**. E isso é o que os frameworks como Angular, ao meu ver, fazem bem. O React é uma lib de UI com escopo de lidar com a renderização através dos **Componentes**. Porém, quando essa ideia não fica clara, acabamos trazendo para os componente várias outras responsabilidades
+Bom, já que falamos de reponsabilidade, acredito que esse seja o cerne dos problemas de organização de uma aplicação React, não separamos bem as reponsabilidades. E isso é o que os frameworks como Angular, ao meu ver, fazem bem. O React é uma lib de UI com escopo de lidar com a renderização através de Componentes. Porém, quando essa ideia não fica clara, acabamos trazendo para os componentes várias outras responsabilidades
 - componentes lidando diretamente com chamadas de APIs
 - componentes tratando exceções
 - componentes tendo que "entender"  regras de negócio
 - componentes fazendo muita manipulação de dados
 - componentes lidando diretamente com recursos do browser
 
-O React é uma lib declarativa, isso quer dizer que quando construímos um componente, nós devemos preocupar mais com O QUE e deixar para o React lidar com o COMO renderizar. Seria bom se usássemos essa mesma abordagem - **O QUE/COMO** - para separarmos o que é responsabilidade do componente e o que não é, e assim mantermos nossos componentes o mais declarativos possível, não só na parte da renderização (já é abstraída pelo React). 
-Para isso precisamos **separar responsabilidades** na nossa aplicação, começando pela estrutura de pastas.
+O React é uma lib declarativa, isso significa que quando construímos um componente, nós devemos preocupar mais com **O QUE** e deixar para o React lidar com **O COMO** renderizar. Seria bom se usássemos essa mesma abordagem - **O QUE/COMO** - para separarmos o que é responsabilidade do componente e o que não é e assim mantermos nossos componentes menos imperativos e **mais declarativos** possível, não só na parte da renderização (que já é abstraída pelo React). Para isso precisamos **separar responsabilidades**, começando pela estrutura de pastas.
 
 ## 1. Estrutura de pastas
 Se você procurar na documentação oficial do React encontrará duas abordagens para estruturação de pastas: agrupamento por [arquivos de mesmo tipo](https://reactjs.org/docs/faq-structure.html#grouping-by-file-type) e agrupamento por [features](https://reactjs.org/docs/faq-structure.html#grouping-by-features-or-routes)
@@ -48,7 +47,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 ### 1.4 Estrutura de pastas - Proposta - Responsabilidades
 - **FeatureStore**
     - Path: ```src/Features/pastaFeature/store```
-    - O nome Store é genérico, mas você pode chamar essa subpasta pelo nome da lib que estiver usando para controle de estado global. Ex. redux
+    - O nome Store é genérico, mas você pode chamar essa subpasta pelo nome da lib que estiver usando para controle de estado global. Ex.: redux
     - Aqui vai todos os arquivos relacionados a controle de estado global da Feature: actions, operations, reducer.
     - ```store/nomeFeatureActions```: para actions síncronas que disparam um único dispatch
     - ```store/nomeFeatureOperations```: É possível que uma action dispare multiplos dispatches e/ou faça algo assíncrono. Por serem "actions epeciais",  vamos chama-las de Operations
@@ -57,7 +56,7 @@ Se você procurar na documentação oficial do React encontrará duas abordagens
 
 - **FeatureHooks**
     - Path: ```src/Features/pastaFeature/hooks```
-    - Pode ser que uma mesma lógica, que envolva uso de hooks do React ou de terceiros, seja útil em mais de um componente da Feature. Nesse caso extraia  a lógica para hooks customizados que serão usados somente no contexto da Feature
+    - Pode ser que uma mesma lógica que envolva uso de hooks do React ou de terceiros seja útil em mais de um componente da Feature. Nesse caso extraia  a lógica para hooks customizados que serão usados somente no contexto da Feature
 
 - **FeatureViews**
     - Path: ```src/Features/pastaFeature/views```
